@@ -57,6 +57,20 @@ services:
       timeout: 10s
       retries: 5
 
+  adminer:
+    container_name: adminer
+    image: adminer:perso
+    build:
+      context: ./requirements/bonus/adminer
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mariadb
+    networks:
+      - inception
+    restart: unless-stopped
+
 volumes:
   wordpress:
     driver: local
