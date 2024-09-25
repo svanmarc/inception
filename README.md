@@ -3,6 +3,5 @@
 openssl s_client -connect svanmarc.42.fr:443
 # verif ssl
 
-mysql -u <WORDPRESS_USER> -p -h <HOST> <WORDPRESS_DB>
-host, on trouve avec docker compose ps , ports de mariadb
-   
+
+mysql -u my_db_user -p -h 127.0.0.1 -P 32770 wordpress_db
