@@ -6,7 +6,7 @@ RUN mkdir -p /etc/ssl && \
     openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
     -out /etc/ssl/certs/nginx-selfsigned.crt \
     -keyout /etc/ssl/private/nginx-selfsigned.key \
-    -subj "/C=FR/ST=Occitanie/L=Perpignan/O=42/CN=svanmarc.42.fr"
+    -subj "/C=FR/ST=France/L=Perpignan/O=42/CN=svanmarc.42.fr"
 
 RUN mkdir -p /var/www/nginx && \
     chmod 755 /var/www/nginx && \

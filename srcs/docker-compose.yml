@@ -71,6 +71,23 @@ services:
       - inception
     restart: unless-stopped
 
+  ftp:
+    container_name: ftp
+    image: ftp:perso
+    build:
+      context: ./requirements/bonus/ftp
+      dockerfile: Dockerfile
+    ports:
+      - "21:21"
+      - "40000-40010:40000-40010"
+    depends_on:
+      - wordpress
+    volumes:
+      - wordpress:/home/ftpuser/ftp
+    networks:
+      - inception
+    restart: unless-stopped
+
 volumes:
   wordpress:
     driver: local

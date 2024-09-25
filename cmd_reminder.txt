@@ -1,0 +1,62 @@
+
+# General Docker Commands:
+docker build -t <image_name> .    # Build an image from a Dockerfile in the current directory
+docker images                    # List all images
+docker ps                         # List running containers
+docker ps -a                      # List all containers (running or stopped)
+docker exec -it <container_name> /bin/bash  # Access a running container with a bash shell
+docker logs <container_name>      # View the logs of a container
+docker start <container_name>     # Start a stopped container
+docker stop <container_name>      # Stop a running container
+docker rm <container_name>        # Remove a stopped container
+docker rmi <image_name>           # Remove an image
+docker-compose up                 # Start containers as defined in docker-compose.yml
+docker-compose down               # Stop and remove containers, networks, images, and volumes created by docker-compose
+docker-compose build              # Rebuild services specified in the docker-compose.yml
+docker-compose exec <service_name> /bin/bash  # Access a running container from a specific service
+docker-compose logs               # View logs of all services in the docker-compose file
+
+# Service-specific Commands:
+# WordPress
+docker-compose exec wordpress /bin/bash      # Access the WordPress service container
+docker-compose logs wordpress                # View the WordPress logs
+
+# MariaDB
+docker-compose exec mariadb /bin/bash        # Access the MariaDB service container
+docker-compose logs mariadb                  # View the MariaDB logs
+docker-compose exec mariadb mysql -u root -p  # Access MariaDB shell
+
+# NGINX
+docker-compose exec nginx /bin/bash          # Access the NGINX service container
+docker-compose logs nginx                    # View the NGINX logs
+
+# Navigating inside MariaDB:
+docker-compose exec mariadb /bin/bash        # Access MariaDB container
+mysql -u root -p                             # Log in to MariaDB shell as root user (enter password when prompted)
+SHOW DATABASES;                              # Show all databases
+USE <database_name>;                         # Switch to a specific database
+SHOW TABLES;                                 # Show all tables in the selected database
+SELECT * FROM <table_name>;                  # Show all data from a specific table
+EXIT;                                        # Exit MariaDB shell
+
+# Navigating inside Adminer:
+# Adminer runs as a web service, so no specific shell commands are required.
+# To access Adminer, open the browser and go to:
+http://<your_domain_or_ip>:8080              # Replace with your domain or IP address
+# Log in with your database credentials to manage MariaDB through Adminer.
+
+# Navigating inside FTP:
+docker-compose exec ftp /bin/bash            # Access FTP container
+cd /home/ftpuser/ftp                         # Navigate to the FTP root directory
+ls                                           # List the files in the FTP directory
+put <file_name>                              # Upload a file to the FTP server
+get <file_name>                              # Download a file from the FTP server
+bye                                          # Exit the FTP session
+
+# Verify SSL certificate using OpenSSL:
+openssl s_client -connect svanmarc.42.fr:443  # Verify SSL certificate of your domain
+
+# Access MariaDB database remotely:
+mysql -u dbuser -p -h 127.0.0.1 -P 32770 wordpress
+				# Access 'wordpress_db' on MariaDB from a specific host and port
+				# docker ps pour avoir le bon nombre
