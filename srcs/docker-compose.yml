@@ -84,6 +84,8 @@ services:
       - wordpress
     volumes:
       - wordpress:/home/ftpuser/ftp
+    env_file:
+      - .env
     networks:
       - inception
     restart: unless-stopped

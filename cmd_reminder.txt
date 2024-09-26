@@ -47,7 +47,10 @@ http://<your_domain_or_ip>:8080              # Replace with your domain or IP ad
 
 # Navigating inside FTP:
 docker-compose exec ftp /bin/bash            # Access FTP container
+docker exec -it ftp /bin/bash				 # 
 cd /home/ftpuser/ftp                         # Navigate to the FTP root directory
+lcd
+!ls
 ls                                           # List the files in the FTP directory
 put <file_name>                              # Upload a file to the FTP server
 get <file_name>                              # Download a file from the FTP server
